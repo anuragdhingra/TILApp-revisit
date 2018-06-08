@@ -15,3 +15,9 @@ extension Category: Content {}
 extension Category: Migration {}
 extension Category: SQLiteModel {}
 
+extension Category {
+    var acronyms : Siblings<Category, Acronym, AcronymCategoryPivot> {
+        return siblings()
+    }
+}
+

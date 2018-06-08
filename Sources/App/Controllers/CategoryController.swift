@@ -7,6 +7,7 @@ struct CategoryController: RouteCollection {
         categoryRoute.get(use: getAllHandler)
         categoryRoute.get(Category.parameter, use: getHandler)
         categoryRoute.post(use: createHandler)
+        categoryRoute.get(Category.parameter,"acronyms", use: getAcronymsHandler)
     }
     
     func getAllHandler(_ req: Request) throws -> Future<[Category]> {
@@ -20,6 +21,12 @@ struct CategoryController: RouteCollection {
     func createHandler(_ req: Request) throws -> Future<Category> {
         let category = try req.content.decode(Category.self)
         return category.save(on: req)
+    }
+    
+    func getAcronymsHandler(_ req: Request) throws -> Future<[Acronym]> {
+        return try req.parameters.next(Category.self).flatMap(to: [Acronym].self) { category in
+            return try category.acronyms.query(on: req).all()
+        }
     }
     
 }
