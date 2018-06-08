@@ -1,5 +1,5 @@
 import Vapor
-import FluentSQLite
+import FluentMySQL
 import Foundation
 
 
@@ -16,7 +16,7 @@ final class User: Codable {
 
 extension User: Content {}
 extension User: Migration {}
-extension User: SQLiteUUIDModel {}
+extension User: MySQLUUIDModel {}
 
 extension User {
     var acronyms : Children<User, Acronym> {

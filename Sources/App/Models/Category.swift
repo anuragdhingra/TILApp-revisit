@@ -1,5 +1,5 @@
 import Vapor
-import FluentSQLite
+import FluentMySQL
 
 
 final class Category: Codable {
@@ -13,7 +13,7 @@ final class Category: Codable {
 
 extension Category: Content {}
 extension Category: Migration {}
-extension Category: SQLiteModel {}
+extension Category: MySQLModel {}
 
 extension Category {
     var acronyms : Siblings<Category, Acronym, AcronymCategoryPivot> {

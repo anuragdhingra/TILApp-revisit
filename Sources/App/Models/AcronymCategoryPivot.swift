@@ -1,7 +1,7 @@
 import Vapor
-import FluentSQLite
+import FluentMySQL
 
-final class AcronymCategoryPivot : SQLitePivot {
+final class AcronymCategoryPivot : MySQLPivot {
     var id: Int?
     var acronymID: Acronym.ID
     var categoryID: Category.ID
