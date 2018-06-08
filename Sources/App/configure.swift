@@ -16,6 +16,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     /// middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
     middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
     services.register(middlewares)
+}
 
     // Configure a MySQL database
      func configureDatabases(_ env: Environment, _ services: inout Services) throws {
@@ -37,7 +38,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
             databasePort = 3306
         }
         
-        let databaseHostname = Environment.get("DATABASE_HOSTNAME") ?? "0.0.0.0"
+        let databaseHostname = Environment.get("DATABASE_HOSTNAME") ?? "127.0.0.1"
         let databaseUsername = Environment.get("DATABASE_USERNAME") ?? "til"
         let databasePassword = Environment.get("DATABASE_PASSWORD") ?? "password"
         
@@ -55,7 +56,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         var databases = DatabasesConfig()
         databases.add(database: mysql, as: .mysql)
         services.register(databases)
-    }
 
 
     /// Configure migrations
