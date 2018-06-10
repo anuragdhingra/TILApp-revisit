@@ -64,9 +64,9 @@ private func configureDatabases(_ env: Environment, _ services: inout Services) 
         databasePort = 3306
     }
     
-    let databaseHostname = Environment.get("DATABASE_HOSTNAME") ?? "127.0.0.1"
-    let databaseUsername = Environment.get("DATABASE_USERNAME") ?? "til"
-    let databasePassword = Environment.get("DATABASE_PASSWORD") ?? "password"
+    let databaseHostname = "192.168.99.100"
+    let databaseUsername = "til"
+    let databasePassword = "password"
     
     mysqlConfig = MySQLDatabaseConfig(
         hostname: databaseHostname,
